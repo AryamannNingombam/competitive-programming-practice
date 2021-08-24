@@ -1,29 +1,8 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
 
 using namespace std;
-
-bool all_filled(vector<pair<int, int>> &tap_range, int size, int n)
-{
-    //check for first;
-    if (tap_range[0].first > 0)
-        return false;
-    //check for last
-    if (tap_range[size - 1].second < n - 1)
-        return false;
-    int previous_second, next_first;
-    for (int i = 1; i < size - 1; i++)
-    {
-        previous_second = tap_range[i - 1].second;
-        next_first = tap_range[i + 1].first;
-        if (previous_second < tap_range[i].first)
-            return false;
-        if (next_first > tap_range[i].second)
-            return false;
-    }
-
-    return true;
-}
 
 int main()
 {
@@ -31,31 +10,22 @@ int main()
     cin >> test_cases;
     while (test_cases--)
     {
-        int n, k, temp_index;
+        int n, k;
         cin >> n >> k;
-        vector<pair<int, int>> tap_range;
-
+        vector<int> taps(k);
         for (int i = 0; i < k; i++)
+            cin >> taps[i];
+        int first_filled = 1, middle_filled = 1, last_filled = 1;
+        first_filled = max(taps[0], first_filled);
+        last_filled = max(n - taps[k - 1] + 1, last_filled);
+        for (int i = 0; i < k - 1; i++)
         {
-            cin >> temp_index;
-            temp_index--;
-            tap_range.push_back({temp_index + 1, temp_index - 1});
+            int distance = taps[i + 1] - taps[i];
+            int middle = distance / 2;
+            middle_filled = max(middle_filled, middle + 1);
         }
-        int iterations = 0;
-        while (1)
-        {
-
-            for (auto &i : tap_range)
-            {
-                i.first--;
-                i.second++;
-            }
-            iterations++;
-            if (all_filled(tap_range, k, n))
-                break;
-        }
-        cout << iterations << '\n';
-        }
+        cout << max(first_filled, max(last_filled, middle_filled)) << '\n';
+    }
 
     return 0;
 }
