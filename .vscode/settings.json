@@ -1,6 +1,7 @@
 {
     "files.associations": {
         "*.jsx": "javascriptreact",
-        "cmath": "cpp"
+        "cmath": "cpp",
+        "string": "cpp"
     }
 }

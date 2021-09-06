@@ -1,34 +1,56 @@
 #include <iostream>
-#include <map>
-#include <unordered_map>
-#include <string>
+#include <vector>
+#include <deque>
+#include <algorithm>
+#include <cmath>
 
 using namespace std;
 
-int lengthOfLongestSubstring(string s)
-{
-    map<char, int> index;
-    int first_pointer = 0;
-    int max_result = 0;
-    for (int second_pointer = 0; second_pointer < s.size(); second_pointer++)
-    {
-
-        if (index.find(s[second_pointer]) != index.end())
-        {
-            first_pointer = max(first_pointer,index[s[second_pointer]] + 1);
-        }
-
-        index[s[second_pointer]] = second_pointer;
-        max_result = max(max_result, second_pointer - first_pointer + 1);
-    }
-
-    return max_result;
-}
-
 int main()
 {
-    string s;
-    cin >> s;
-    cout << lengthOfLongestSubstring(s) << '\n';
+    vector<int> arr1 = {-1, 0, 1, 3, 5}, arr2 = {-2, 1, 6, 7};
+    vector<int> arr3;
+    int first_pointer = 0, second_pointer = 0;
+    while (first_pointer < arr1.size() && second_pointer < arr2.size())
+    {
+        if (arr1[first_pointer] < arr2[second_pointer])
+        {
+            arr3.push_back(arr1[first_pointer]);
+            first_pointer++;
+        }
+        else
+        {
+            arr3.push_back(arr2[second_pointer]);
+            second_pointer++;
+        }
+    }
+    while (first_pointer < arr1.size())
+    {
+        arr3.push_back(arr1[first_pointer++]);
+    }
+    while (second_pointer < arr2.size())
+    {
+        arr3.push_back(arr2[second_pointer++]);
+    }
+    for (auto i : arr3)
+        cout << i << ' ';
+    cout <<'\n';
+    deque<int> arr4;
+    first_pointer = 0, second_pointer = arr3.size() - 1;
+    while (first_pointer <= second_pointer)
+    {
+        if (abs(arr3[first_pointer]) > abs(arr3[second_pointer]))
+        {
+            arr4.push_front(arr3[first_pointer++]);
+        }
+        else
+        {
+            arr4.push_front(arr3[second_pointer--]);
+        }
+    }
+
+    for (auto i : arr4)
+        cout << pow(i, 2) << ' ';
+
     return 0;
 }
