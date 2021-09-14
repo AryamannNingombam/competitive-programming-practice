@@ -3,6 +3,7 @@
         "*.jsx": "javascriptreact",
         "cmath": "cpp",
         "string": "cpp",
-        "iostream": "cpp"
+        "iostream": "cpp",
+        "algorithm": "cpp"
     }
 }
