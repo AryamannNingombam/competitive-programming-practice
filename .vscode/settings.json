@@ -4,6 +4,7 @@
         "cmath": "cpp",
         "string": "cpp",
         "iostream": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "random": "cpp"
     }
 }
