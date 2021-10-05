@@ -5,30 +5,40 @@
 #include <iomanip>
 using namespace std;
 
- long double return_distance(long double x, long double y)
-{
-    return sqrtl(powl(x, 2) + powl(y, 2));
+bool sort_pair(pair<pair<long double,long double>,long> &left,
+pair<pair<long double,long double>,long> &right){
+    return sqrtl(powl(left.first.first, 2) + powl(left.first.second, 2))
+     < sqrtl(powl(right.first.first, 2) + powl(right.first.second, 2));
 }
 
-int main(){
-    cout<< setprecision(6);
-    long long size,current,x,y,pop;
+int main()
+{
+    long long size, current, x, y, pop;
     cin >> size >> current;
-    vector<pair<long double,long>> arr(size);
-    for (int i=0;i<size;i++){
-        cin>>x>>y>>pop;
-        arr[i] = {return_distance(x,y),pop};
-        
+    vector<pair<pair<long double, long double>, long>> arr(size);
+    unsigned long long temp_sum = current;
+    for (int i = 0; i < size; i++)
+    {
+        cin >> x >> y >> pop;
+        arr[i] = {{x, y}, pop};
+        temp_sum += pop;
     }
-    sort(arr.begin(),arr.end());
-    for (int i=0;i<size;i++){
-        current += arr[i].second;
-        if (current>=1000000){
-            cout << arr[i].first << '\n';
+    if (temp_sum < pow(10, 6))
+    {
+        cout << -1 << '\n';
+        return 0;
+    }
+    sort(arr.begin(), arr.end(),sort_pair);
+    temp_sum = current;
+    for (int i = 0; i < size; i++)
+    {
+        temp_sum += arr[i].second;
+        if (temp_sum >= pow(10, 6))
+        {
+            cout << setprecision(8) << sqrtl(powl(arr[i].first.first, 2) + powl(arr[i].first.second, 2)) << '\n';
             return 0;
         }
     }
-    cout << -1 << '\n';
 
     return 0;
 }
