@@ -1,24 +1,37 @@
 #include <iostream>
-#include <cmath>
+#include <string>
+#include <unordered_map>
 
 using namespace std;
 
-int main() {
-	int p,q;
-	cin >> p >> q;
-	int result =0;
-	int arr[p];
-	long long sum=0;
-	for (int i=0;i<p;i++){
-		cin >> arr[i];
+bool solve(string &s, string &t, string &p)
+{
+	if (s == t)
+		return true;
+	if (s.size() > t.size())
+		return false;
+
+	unordered_map<char, int> s_map, t_map, p_map;
+	for (auto &i : s)
+		s_map[i]++;
+	for (auto &i : t)
+		t_map[i]++;
+	for (auto &i : p)
+		p_map[i]++;
+	for (auto it = t_map.begin(); it != t_map.end(); it++)
+	{
+		if (s_map[it->first] > it->second)
+			return false;
+		if (s_map[it->first] + p_map[it->first] < it->second)
+			return false;
 	}
-	for (int i=0;i<p;i++){
-		if (arr[i]/q>0)result+=arr[i]/q;
-		sum+=arr[i]%q;
-		
-	}
-	result += ceil((float)(sum))/q;
- 	
-	cout << result << '\n';
+	return true;
+}
+
+int main()
+{
+	string s, t, p;
+	cin >> s >> t >> p;
+	cout << (solve(s, t, p) ? "YES" : "NO") << '\n';
 	return 0;
 }
