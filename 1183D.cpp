@@ -16,6 +16,8 @@ int main()
             cin >> temp, occ[temp]++;
         sort(occ.begin(), occ.end(),greater<int>());
         int result = occ[0], last = occ[0], index = 1;
+        // for (auto i:occ)cout << i << ' ';
+        // cout << '\n';
         while (index < size && last > 0)
         {
             if (occ[index] >= last)
