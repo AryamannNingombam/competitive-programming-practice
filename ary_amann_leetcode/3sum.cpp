@@ -31,7 +31,7 @@ public:
                 else
                 {
                     result.push_back({nums[i], nums[first_pointer], nums[second_pointer]});
-                    second_pointer--;
+                    second_pointer -= 1;
                     while (first_pointer < second_pointer && nums[second_pointer] == nums[second_pointer + 1])
                         second_pointer--;
                 }
