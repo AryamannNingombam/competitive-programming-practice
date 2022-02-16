@@ -11,6 +11,24 @@
         "memory": "cpp",
         "regex": "cpp",
         "span": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "__bit_reference": "cpp",
+        "__hash_table": "cpp",
+        "__split_buffer": "cpp",
+        "__tree": "cpp",
+        "array": "cpp",
+        "deque": "cpp",
+        "iterator": "cpp",
+        "filesystem": "cpp",
+        "forward_list": "cpp",
+        "list": "cpp",
+        "map": "cpp",
+        "scoped_allocator": "cpp",
+        "set": "cpp",
+        "string_view": "cpp",
+        "thread": "cpp",
+        "unordered_map": "cpp",
+        "unordered_set": "cpp",
+        "vector": "cpp"
     }
 }
