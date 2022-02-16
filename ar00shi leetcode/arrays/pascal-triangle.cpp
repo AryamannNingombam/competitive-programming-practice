@@ -18,10 +18,6 @@
         return v;
 
     }
-    /*int main(){
-        int n;
-        cin>>n;
-        generate()
-    }*/
+
 
 
