@@ -1,17 +1,11 @@
-#include <iostream>
-#include <vector>
-#include <string>
-
-using namespace std;
-
 class Solution
 {
 public:
     vector<int> spiralOrder(vector<vector<int>> &matrix)
     {
         int i, k = 0, l = 0;
-        const int m = matrix.size();
-        const int n = matrix[0].size();
+        int m = matrix.size();
+        int n = matrix[0].size();
         vector<int> result;
         while (k < m && l < n)
         {
@@ -42,5 +36,6 @@ public:
                 l++;
             }
         }
+        return result;
     }
 };
