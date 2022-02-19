@@ -34,4 +34,5 @@ public:
 
 
     }
-};//iska binary search wala method is op logic think about how the segregation (high/n and high%n wali cheez
+};
+//iska binary search wala method is op logic think about how the segregation (high/n and high%n wali cheez
