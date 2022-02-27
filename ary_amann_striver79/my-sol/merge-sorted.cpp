@@ -1,6 +1,3 @@
-#include <vector>
-
-using namespace std;
 
 class Solution
 {
@@ -13,19 +10,17 @@ public:
     }
     void merge(vector<int> &nums1, int m, vector<int> &nums2, int n)
     {
-        int f = 0, s = 0;
-        while (f < m && s < n)
+        int f = m - 1, s = n - 1, index = m + n - 1;
+        while (f > -1 && s > -1)
         {
             if (nums1[f] > nums2[s])
-            {
-                swap(nums1[f++], nums2[s]);
-            }
+                nums1[index--] = nums1[f--];
             else
-                s++;
+                nums1[index--] = nums2[s--];
         }
-        while (f < m)
-        {
-            swap(nums1[f++], nums2[s]);
-        }
+        while (f > -1)
+            nums1[index--] = nums1[f--];
+        while (s > -1)
+            nums1[index--] = nums2[s--];
     }
 };

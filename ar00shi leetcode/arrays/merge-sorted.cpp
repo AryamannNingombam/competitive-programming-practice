@@ -1,26 +1,87 @@
-
-class Solution
+#include <bits/stdc++.h>
+using namespace std;
+void merge(vector<int> &a, int m, vector<int> &b, int n)
 {
-public:
-    void swap(int &a, int &b)
+    int i = m - 1, j = n - 1, idx = m + n - 1;
+    while (i >= 0 && j >= 0)
     {
-        int temp = a;
-        a = b;
-        b = temp;
-    }
-    void merge(vector<int> &nums1, int m, vector<int> &nums2, int n)
-    {
-        int f = m - 1, s = n - 1, index = m + n - 1;
-        while (f > -1 && s > -1)
+        if (a[i] >= b[j])
         {
-            if (nums1[f] > nums2[s])
-                nums1[index--] = nums1[f--];
-            else
-                nums1[index--] = nums2[s--];
+            a[idx] = a[i];
+            i--;
         }
-        while (f > -1)
-            nums1[index--] = nums1[f--];
-        while (s > -1)
-            nums1[index--] = nums2[s--];
+        else
+        {
+            a[idx] = b[j];
+            j--;
+        }
+        idx--;
+    }
+    while (i >= 0)
+        a[idx--] = a[i--];
+    while (j >= 0)
+        a[idx--] = b[j--];
+    return;
+}
+int main()
+{
+    vector<int> a = {1, 2, 3};
+    vector<int> b = {2, 6, 7};
+    int m = 3, n = 3;
+    a.resize(m + n);
+    merge(a, m, b, n);
+    for (int &x : a)
+        cout << x << " ";
+    return 0;
+}
+
+/*
+
+class Solution {
+public:
+    void merge(vector<int>& nums1, int n, vector<int>& nums2, int m) {
+
+        vector<int> ans;
+        int i=0,j=0;
+
+        if(n==0){
+            for(i=0;i<n;i++){
+                cout<<nums1[i];
+            }
+        }
+
+        if(m==0){
+            for(i=0;i<n;i++){
+                cout<<nums2[i];
+            }
+        }
+
+        while(i<n && j<m){
+            if(nums1[i]<=nums2[j]){
+                ans.push_back(nums1[i]);
+                i++;
+            }
+            else{
+                ans.push_back(nums2[j]);
+                j++;
+            }
+        }
+
+        while(i<n){
+            ans.push_back(nums1[i--]);
+        }
+
+        while(j<m){
+            ans.push_back(nums2[j--]);
+        }
+
+
+        for(i=0;i<n;i++){
+            cout<<ans[i];
+        }
+
+        return;
+
     }
 };
+*/
