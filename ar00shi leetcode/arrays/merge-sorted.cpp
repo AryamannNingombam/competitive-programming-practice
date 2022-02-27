@@ -1,11 +1,11 @@
 #include <bits/stdc++.h>
 using namespace std;
-void merge(vector <int> &a , int m , vector <int> &b , int n)
+void merge(vector<int> &a, int m, vector<int> &b, int n)
 {
-    int i = m - 1 , j = n - 1 , idx = m + n - 1;
-    while(i >= 0 && j >= 0)
+    int i = m - 1, j = n - 1, idx = m + n - 1;
+    while (i >= 0 && j >= 0)
     {
-        if(a[i] >= b[j])
+        if (a[i] >= b[j])
         {
             a[idx] = a[i];
             i--;
@@ -17,24 +17,23 @@ void merge(vector <int> &a , int m , vector <int> &b , int n)
         }
         idx--;
     }
-    while(i >= 0)
+    while (i >= 0)
         a[idx--] = a[i--];
-    while(j >= 0)
+    while (j >= 0)
         a[idx--] = b[j--];
     return;
 }
 int main()
 {
-    vector <int> a = {1 , 2 , 3};
-    vector <int> b = {2 , 6 , 7};
-    int m = 3 , n = 3;
+    vector<int> a = {1, 2, 3};
+    vector<int> b = {2, 6, 7};
+    int m = 3, n = 3;
     a.resize(m + n);
-    merge(a , m , b , n);
-    for(int &x : a)
+    merge(a, m, b, n);
+    for (int &x : a)
         cout << x << " ";
     return 0;
 }
-
 
 /*
 
@@ -86,4 +85,3 @@ public:
     }
 };
 */
-
