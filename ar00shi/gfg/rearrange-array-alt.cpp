@@ -5,7 +5,6 @@
     int flag = true;
  
     for (int i = 0; i < n; i++) {
-        if (flag)
             temp[i] = arr[large--];
         else
             temp[i] = arr[small++];
