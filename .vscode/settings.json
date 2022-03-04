@@ -32,6 +32,15 @@
         "vector": "cpp",
         "initializer_list": "cpp",
         "valarray": "cpp",
-        "ranges": "cpp"
+        "ranges": "cpp",
+        "__locale": "cpp",
+        "__threading_support": "cpp",
+        "bitset": "cpp",
+        "coroutine": "cpp",
+        "optional": "cpp",
+        "system_error": "cpp",
+        "type_traits": "cpp",
+        "typeindex": "cpp",
+        "variant": "cpp"
     }
 }
