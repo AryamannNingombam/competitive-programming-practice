@@ -39,13 +39,11 @@ int main()
             break_point = i;
         }
     }
-    if (arr[break_point] > arr[0] || arr[0] < arr[size - 1])
-
+    if (arr[break_point] > arr[0])
     {
         cout << -1 << '\n';
         return 0;
     }
-
-    cout << size - break_point << '\n';
+    cout << "BREAKPOINT : " << break_point << '\n';
     return 0;
 }
