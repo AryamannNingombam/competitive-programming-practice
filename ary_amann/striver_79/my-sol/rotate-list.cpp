@@ -17,9 +17,7 @@ public:
     ListNode *rotateRight(ListNode *head, int k)
     {
 
-        if (!head || k == 0)
-            return head;
-        if (!head->next)
+        if (!head || k == 0 || !head->next)
             return head;
         int l = length(&head);
         int r = k % l;
@@ -33,7 +31,6 @@ public:
         }
         ListNode *new_head = cur->next;
         cur->next = nullptr;
-        cout << cur->val << endl;
         cur = new_head;
         while (cur && cur->next)
         {
