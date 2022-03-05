@@ -142,25 +142,35 @@ Node *merge(Node *l, Node *r)
     }
     if (l)
     {
-        cur->bottom = l;
+        while (l)
+        {
+            cur->bottom = new Node(l->data);
+            cur = cur->bottom;
+            l = l->bottom;
+        }
     }
     if (r)
     {
-        cur->bottom = r;
+        while (r)
+        {
+            cur->bottom = new Node(r->data);
+            cur = cur->bottom;
+            r = r->bottom;
+        }
     }
 
-    return result->next;
+    return result->bottom;
 }
 Node *flatten(Node *root)
 {
-    Node *result = root;
-    while (result->next)
+    Node *answer = NULL;
+    Node *it = NULL;
+    while (root)
     {
-        Node *temp = merge(result, result->next);
-        if (result->next)
-            result->next->next = temp;
-        result = temp;
+        it = merge(it, root);
+        root = root->next;
+        answer = it;
     }
 
-    return result;
+    return answer;
 }
