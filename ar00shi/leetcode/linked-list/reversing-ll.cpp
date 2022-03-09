@@ -37,6 +37,7 @@ public:
 //         head->next->next = head;
 //         head->next = NULL;
 //         return nnode;
+//understand this girl^^
         
     }
 };
