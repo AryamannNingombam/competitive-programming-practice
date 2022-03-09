@@ -1,7 +1,7 @@
 
 class Solution
 {
-
+    // hllo
 public:
     int kthGrammar(int n, int k)
     {
