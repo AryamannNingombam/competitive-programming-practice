@@ -13,4 +13,4 @@ class Solution
         head->next = deleteKthNode(head->next, k - 1);
         return head;
     }
-}
+};
