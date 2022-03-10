@@ -41,6 +41,7 @@
         "system_error": "cpp",
         "type_traits": "cpp",
         "typeindex": "cpp",
-        "variant": "cpp"
+        "variant": "cpp",
+        "iosfwd": "cpp"
     }
 }
