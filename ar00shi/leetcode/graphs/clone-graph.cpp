@@ -19,26 +19,28 @@ public:
 };
 */
 
-class Solution {
+class Solution
+{
 public:
-    unordered_map<Node* , Node*> hash; 
-    Node* cloneGraph(Node* node) {
-        if(node == NULL) 
+    unordered_map<Node *, Node *> hash;
+    Node *cloneGraph(Node *node)
+    {
+        if (node == NULL)
         {
             return NULL;
         }
-        if(hash.find(node) == hash.end())
+        if (hash.find(node) == hash.end())
         {
-            hash[node] = new Node(node -> val, {}); 
-            
-            for(auto adj: node -> neighbors)
+            hash[node] = new Node(node->val, {});
+
+            for (auto adj : node->neighbors)
             {
-                hash[node] -> neighbors.push_back(cloneGraph(adj));
+                hash[node]->neighbors.push_back(cloneGraph(adj));
             }
         }
-        
-        return hash[node]; 
+
+        return hash[node];
     }
 };
 
-//dont fully get it
+// dont fully get it
