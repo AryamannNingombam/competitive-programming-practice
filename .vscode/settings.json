@@ -43,6 +43,7 @@
         "typeindex": "cpp",
         "variant": "cpp",
         "iosfwd": "cpp",
-        "complex": "cpp"
+        "complex": "cpp",
+        "*.tcc": "cpp"
     }
 }
